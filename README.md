@@ -8,3 +8,6 @@ TODO:
 - Cloudflare supproted in https://github.com/cloudflare/workers-sdk/pull/11879
 - Add starter examples + react router framework examples + waku
     - each with nitro and cloudflare
+- Deployed examples
+    - https://vite-rsc-react-router-framework-mode.hiro18181.workers.dev/
+    - https://vite-rsc-starter.hiro18181.workers.dev/
