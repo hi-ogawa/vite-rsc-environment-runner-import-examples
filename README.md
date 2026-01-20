@@ -1,26 +1,10 @@
 # Vite RSC and Environment Plugin Examples
 
-This repository demonstrates how to use [`@vitejs/plugin-rsc`](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) with different runtime providers that implement the `__VITE_ENVIRONMENT_RUNNER_IMPORT__` convention, including [React Router framework mode](https://reactrouter.com/how-to/react-server-components) examples.
+This repository demonstrates how to use [`@vitejs/plugin-rsc`](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) with different environment plugins that implement the `__VITE_ENVIRONMENT_RUNNER_IMPORT__` convention, including [React Router framework mode](https://reactrouter.com/how-to/react-server-components) examples.
 
 ## Background
 
-React Server Components (RSC) require cross-environment module loading - the RSC environment needs to load modules from the SSR environment, and vice versa. Vite's `import.meta.viteRsc.loadModule` API enables this, but by default it assumes all environments run in the main Vite process via `RunnableDevEnvironment`.
-
-Frameworks like Nitro and Cloudflare Workers run environments in separate workers that can't directly access the main Vite process. The `__VITE_ENVIRONMENT_RUNNER_IMPORT__` convention solves this by providing a global function that runtime providers can implement to handle cross-environment module loading in their architecture.
-
-```typescript
-globalThis.__VITE_ENVIRONMENT_RUNNER_IMPORT__ = async (
-  environmentName: string,
-  id: string
-): Promise<any> => {
-  // Runtime-specific implementation
-}
-```
-
-### References
-
-- [PR #1037: Introduce `__VITE_ENVIRONMENT_RUNNER_IMPORT__` convention](https://github.com/vitejs/vite-plugin-react/pull/1037)
-- [plugin-rsc documentation](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc#__vite_environment_runner_import__)
+`@vitejs/plugin-rsc` defines the [`__VITE_ENVIRONMENT_RUNNER_IMPORT__`](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc#__vite_environment_runner_import__) convention for runtime providers to enable cross-environment module loading required by RSC. See [PR #1037](https://github.com/vitejs/vite-plugin-react/pull/1037) for details.
 
 ## Runtime Provider Support
 
