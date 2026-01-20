@@ -25,7 +25,7 @@ export type RscPayload = {
 
 // the plugin by default assumes `rsc` entry having default export of request handler.
 // however, how server entries are executed can be customized by registering own server handler.
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
   // differentiate RSC, SSR, action, etc.
   const renderRequest = parseRenderRequest(request)
   request = renderRequest.request
@@ -118,3 +118,5 @@ export default async function handler(request: Request): Promise<Response> {
 if (import.meta.hot) {
   import.meta.hot.accept()
 }
+
+export default { fetch: handler }
